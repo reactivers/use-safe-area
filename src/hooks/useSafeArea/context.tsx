@@ -1,7 +1,6 @@
-
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import useUtils from '../useUtils';
 import ResizeObserver from "resize-observer-polyfill"
+import { isEqualJSON } from "../../utils/functions"
 
 export interface ISafeArea {
     top: number;
@@ -18,7 +17,6 @@ const SafeAreaContext = createContext({
 } as ISafeArea);
 
 const SafeAreaProvider = ({ children }) => {
-    const { isEqualJSON } = useUtils();
     const [safeArea, setSafeArea] = useState({ top: 0, right: 0, bottom: 0, left: 0 });
     const insets = ["safe-area-inset-top", "safe-area-inset-right", "safe-area-inset-bottom", "safe-area-inset-left"]
 
